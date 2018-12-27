@@ -4,7 +4,7 @@ organization := "org.codecraftlabs.spark"
 
 name := "spark-utils"
 
-val appVersion = "1.0.0.0"
+val appVersion = "1.0.0"
 
 val appName = "spark-utils"
 
