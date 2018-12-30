@@ -10,4 +10,8 @@ object DataUtils {
   def saveDataFrameToJson(df: DataFrame, destination: String, partitions: Int = 1, saveMode: String = "overwrite", header: Boolean = false): Unit = {
     df.coalesce(partitions).write.mode(saveMode).json(destination)
   }
+
+  def saveDataFrameToParquet(df: DataFrame, destination: String, partitions: Int = 1, saveMode: String = "overwrite"): Unit = {
+    df.coalesce(partitions).write.mode(saveMode).parquet(destination)
+  }
 }
