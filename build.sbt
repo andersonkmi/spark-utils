@@ -18,6 +18,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "2.4.0",
   "org.apache.spark" %% "spark-sql" % "2.4.0",
   "org.json4s" %% "json4s-jackson" % "3.6.2",
+  "com.amazonaws" % "aws-java-sdk-s3" % "1.11.475",
   "com.databricks" % "spark-csv_2.11" % "1.5.0",
   scalaTest % Test
 )
