@@ -6,14 +6,14 @@ object RestUtils {
   @throws(classOf[java.io.IOException])
   @throws(classOf[java.net.SocketTimeoutException])
   def get(url: String,
-          appToken: String,
           connectTimeout: Int = 5000,
           readTimeout: Int = 5000,
-          requestMethod: String = "GET") =
+          requestMethod: String = "GET",
+          requestHeaders: Map[String, String] = Map()): String =
   {
     import java.net.{URL, HttpURLConnection}
     val connection = new URL(url).openConnection.asInstanceOf[HttpURLConnection]
-    connection.setRequestProperty("X-App-Token", appToken)
+    requestHeaders.foreach(item => connection.setRequestProperty(item._1, item._2))
     connection.setConnectTimeout(connectTimeout)
     connection.setReadTimeout(readTimeout)
     connection.setRequestMethod(requestMethod)
