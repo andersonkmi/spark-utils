@@ -1,13 +1,21 @@
 package org.codecraftlabs.spark.utils
 
+import scala.collection.mutable
+
 object Timer {
-  val timing = new StringBuilder
+  private val timings = mutable.ArrayBuffer[String]()
+
   def timed[T](label: String, code: => T): T = {
     val start = System.currentTimeMillis()
     val result = code
     val stop = System.currentTimeMillis()
-    timing.append(s"Processing $label took ${stop - start} ms.\n")
+    timings += s"Processing $label took ${stop - start} ms."
     result
   }
 
+  def timing: String = {
+    val buffer = new StringBuilder
+    timings.foreach(buffer.append(_).append("\n"))
+    buffer.toString
+  }
 }
