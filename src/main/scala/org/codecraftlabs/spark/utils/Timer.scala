@@ -1,7 +1,7 @@
 package org.codecraftlabs.spark.utils
 
 object Timer {
-  val timing = new StringBuffer
+  val timing = new StringBuilder
   def timed[T](label: String, code: => T): T = {
     val start = System.currentTimeMillis()
     val result = code
