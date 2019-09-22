@@ -10,13 +10,13 @@ val appName = "spark-utils"
 
 version := appVersion
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.10"
 
 resolvers += Classpaths.typesafeReleases
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "2.4.0",
-  "org.apache.spark" %% "spark-sql" % "2.4.0",
+  "org.apache.spark" %% "spark-core" % "2.4.4",
+  "org.apache.spark" %% "spark-sql" % "2.4.4",
   "com.amazonaws" % "aws-java-sdk-s3" % "1.11.401",
   scalaTest % Test
 )
