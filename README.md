@@ -13,6 +13,7 @@ Some of the classes found here are related to:
 - AWS S3 download/upload functions
 - Timer utils
 - Decompressing data (zip format)
+- File utils
 
 ## 3. Build and deploy
 
