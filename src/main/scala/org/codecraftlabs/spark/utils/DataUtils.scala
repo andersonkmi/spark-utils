@@ -2,6 +2,7 @@ package org.codecraftlabs.spark.utils
 
 import org.apache.log4j.Logger
 import org.apache.spark.sql.{DataFrame, Dataset}
+import org.apache.spark.sql.functions.asc
 
 object DataUtils {
   @transient lazy val logger:Logger = Logger.getLogger(getClass.getName)
@@ -34,5 +35,9 @@ object DataUtils {
   def saveDatasetToParquet[T](ds: Dataset[T], destination: String, partitions: Int = 1, saveMode: String = "overwrite"): Unit = {
     logger.debug(s"Saving data frame to parquet with $partitions partitions, mode '$saveMode', destination '$destination'")
     ds.coalesce(partitions).write.mode(saveMode).parquet(destination)
+  }
+
+  def extractDistinctValues(contents: DataFrame, columnName: String): DataFrame = {
+    contents.select(contents(columnName)).distinct.orderBy(asc(columnName))
   }
 }
