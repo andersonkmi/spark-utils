@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.0.5]
+
+### Added
+- Utility methods for file manipulation  
+
 ## [v1.0.4]
 
 ### Removed
@@ -26,3 +31,4 @@ All notable changes to this project will be documented in this file.
 [Unreleased]: https://github.com/andersonkmi/spark-utils/compare/v1.0.2...HEAD
 [v1.0.3]: https://github.com/andersonkmi/spark-utils/compare/v1.0.2...v1.0.3
 [v1.0.4]: https://github.com/andersonkmi/spark-utils/compare/v1.0.3...v1.0.4
+[v1.0.5]: https://github.com/andersonkmi/spark-utils/compare/v1.0.4...v1.0.5
