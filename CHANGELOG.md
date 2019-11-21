@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.0.6]
+
+### Changed
+- If string array passed is null, returns an empty map
+
 ## [v1.0.5]
 
 ### Added
@@ -32,3 +37,4 @@ All notable changes to this project will be documented in this file.
 [v1.0.3]: https://github.com/andersonkmi/spark-utils/compare/v1.0.2...v1.0.3
 [v1.0.4]: https://github.com/andersonkmi/spark-utils/compare/v1.0.3...v1.0.4
 [v1.0.5]: https://github.com/andersonkmi/spark-utils/compare/v1.0.4...v1.0.5
+[v1.0.6]: https://github.com/andersonkmi/spark-utils/compare/v1.0.5...v1.0.6
