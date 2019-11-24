@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.0.7]
+
+### Added
+- Parsed args validation method. If an argument is missing its value, it throws an exception.
+- Added unit test when args list is empty
+
 ## [v1.0.6]
 
 ### Changed
@@ -38,3 +44,4 @@ All notable changes to this project will be documented in this file.
 [v1.0.4]: https://github.com/andersonkmi/spark-utils/compare/v1.0.3...v1.0.4
 [v1.0.5]: https://github.com/andersonkmi/spark-utils/compare/v1.0.4...v1.0.5
 [v1.0.6]: https://github.com/andersonkmi/spark-utils/compare/v1.0.5...v1.0.6
+[v1.0.7]: https://github.com/andersonkmi/spark-utils/compare/v1.0.6...v1.0.7
