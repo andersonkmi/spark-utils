@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.0.8]
+
+### Changed
+- Fixed incorrect exception class name.
+
 ## [v1.0.7]
 
 ### Added
@@ -45,3 +50,4 @@ All notable changes to this project will be documented in this file.
 [v1.0.5]: https://github.com/andersonkmi/spark-utils/compare/v1.0.4...v1.0.5
 [v1.0.6]: https://github.com/andersonkmi/spark-utils/compare/v1.0.5...v1.0.6
 [v1.0.7]: https://github.com/andersonkmi/spark-utils/compare/v1.0.6...v1.0.7
+[v1.0.8]: https://github.com/andersonkmi/spark-utils/compare/v1.0.7...v1.0.8
