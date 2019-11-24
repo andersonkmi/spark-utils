@@ -5,6 +5,7 @@ import scala.collection.mutable
 object ArgsUtils {
   private val ArgsKeyIndicator: String = "--"
 
+  @throws(classOf[Exceptions])
   def parseArgs(args: Array[String]): Map[String, String] = {
     val result = mutable.Map[String, String]()
 
@@ -21,7 +22,13 @@ object ArgsUtils {
           result(currentKey) = currentItem
         }
       }
+      validateParsedArgs(result.toMap)
       result.toMap
     }
+  }
+
+  @throws(classOf[Exceptions])
+  private def validateParsedArgs(args: Map[String, String]): Unit = {
+    if(args.exists(_._2.isEmpty)) throw Exceptions("Missing arguments")
   }
 }

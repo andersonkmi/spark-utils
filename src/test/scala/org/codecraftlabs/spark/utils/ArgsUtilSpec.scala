@@ -14,13 +14,16 @@ class ArgsUtilSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
     result.size shouldEqual 0
   }
 
-  "Single args" should "return 1 empty arg" in {
-    val args = Array("--test")
+  "Empty args" should "be empty" in {
+    val args = Array.empty[String]
     val result = ArgsUtils.parseArgs(args)
     result should not be null
-    result.size shouldEqual 1
-    result.head._1 shouldEqual "--test"
-    result.head._2 shouldEqual ""
+    result.size shouldEqual 0
+  }
+
+  "Single args" should "return 1 empty arg" in {
+    val args = Array("--test")
+    an [Exceptions] should be thrownBy ArgsUtils.parseArgs(args)
   }
 
   "Single arguments" should "return 1 valid arg" in {
