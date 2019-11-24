@@ -23,7 +23,7 @@ class ArgsUtilSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   "Single args" should "return 1 empty arg" in {
     val args = Array("--test")
-    an [Exceptions] should be thrownBy ArgsUtils.parseArgs(args)
+    an [InvalidArgsException] should be thrownBy ArgsUtils.parseArgs(args)
   }
 
   "Single arguments" should "return 1 valid arg" in {
