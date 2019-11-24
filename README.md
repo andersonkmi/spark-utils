@@ -1,4 +1,4 @@
-# Spark Utils
+# Spark Utils [![Build Status](https://travis-ci.org/andersonkmi/spark-utils.svg?branch=master)](https://travis-ci.org/andersonkmi/spark-utils)
 Library with common objects used in other Spark/Scala projects
 
 ## 1. Introduction
