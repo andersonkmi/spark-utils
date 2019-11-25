@@ -14,6 +14,16 @@ object FileUtil {
     }
   }
 
+  def getListOfFiles(dir: String, extensions: List[String]): List[String] = {
+    val root = new File(dir)
+
+    if (root.exists && root.isDirectory) {
+      getRecursiveListOfFiles(root).filter(item => extensions.exists(item.getName.endsWith(_))).map(item => item.getAbsolutePath).toList
+    } else {
+      List[String]()
+    }
+  }
+
   def getRecursiveListOfFiles(dir: File): Array[File] = {
     val these = dir.listFiles
     these ++ these.filter(_.isDirectory).flatMap(getRecursiveListOfFiles)
