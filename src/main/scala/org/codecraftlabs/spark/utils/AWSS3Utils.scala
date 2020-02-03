@@ -7,7 +7,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder
 import com.amazonaws.services.s3.model.{ObjectMetadata, PutObjectRequest}
 import org.apache.log4j.Logger
 
-
+@deprecated
 object AWSS3Utils {
   private val S3Separator: String = "/"
   @transient lazy val logger:Logger = Logger.getLogger(getClass.getName)
