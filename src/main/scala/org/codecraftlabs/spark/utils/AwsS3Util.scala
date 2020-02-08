@@ -1,15 +1,36 @@
 package org.codecraftlabs.spark.utils
 
-import java.io.{File, FileInputStream}
+import java.io.File.separator
+import java.io.{File, FileInputStream, FileOutputStream}
+import java.nio.file.Paths
 
-import software.amazon.awssdk.core.sync.RequestBody
-import software.amazon.awssdk.services.s3.model.PutObjectRequest
+import software.amazon.awssdk.core.sync.{RequestBody, ResponseTransformer}
+import software.amazon.awssdk.services.s3.model.{GetObjectRequest, PutObjectRequest}
 import org.apache.log4j.Logger
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.s3.S3Client
 
 object AwsS3Util {
+  private val S3Separator: String = "/"
   @transient lazy val logger:Logger = Logger.getLogger(getClass.getName)
+
+  def downloadObject(region: String, bucket: String, key: String, local: String = "."): Unit = {
+    val s3Client = S3Client.builder.region(Region.of(region)).build
+    val objectRequest: GetObjectRequest = GetObjectRequest.builder.bucket(bucket).key(key).build
+    val s3Object = s3Client.getObject(objectRequest)
+    val tokens = key.split(S3Separator)
+
+    val path = new File(local)
+    val fos = new FileOutputStream(new File(path.getAbsolutePath + separator + tokens.last))
+    val read_buf = new Array[Byte](1024)
+    var len = s3Object.read(read_buf)
+    while (len > 0) {
+      fos.write(read_buf, 0, len)
+      len = s3Object.read(read_buf)
+    }
+    s3Object.close()
+    fos.close()
+  }
 
   def uploadObjects(region: String, bucket: String, prefix: String, localBasePath: String, files: List[String]): Unit = {
     val s3Client = S3Client.builder.region(Region.of(region)).build
