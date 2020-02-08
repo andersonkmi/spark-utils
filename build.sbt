@@ -17,7 +17,6 @@ resolvers += Classpaths.typesafeReleases
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "2.4.4",
   "org.apache.spark" %% "spark-sql" % "2.4.4",
-  "com.amazonaws" % "aws-java-sdk-s3" % "1.11.678",
   "software.amazon.awssdk" % "s3" % "2.10.55",
   scalaTest % Test
 )
