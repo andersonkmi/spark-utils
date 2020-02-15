@@ -1,15 +1,15 @@
 package org.codecraftlabs.spark.utils
 
 import org.apache.log4j.Logger
-import org.apache.spark.sql.SaveMode.Overwrite
-import org.apache.spark.sql.{DataFrame, Dataset, SaveMode}
 import org.apache.spark.sql.functions.asc
+import org.apache.spark.sql.{DataFrame, Dataset}
 
+@deprecated("This object will be removed", "v1.3.0")
 object DataUtils {
   @transient lazy val logger:Logger = Logger.getLogger(getClass.getName)
   private val Header: String = "header"
 
-  @Deprecated
+  @deprecated("This method will be removed", "v1.3.0")
   def saveDataFrameToCsv(df: DataFrame,
                          partitions: Int = 1,
                          destination: String,
@@ -19,16 +19,7 @@ object DataUtils {
     df.coalesce(partitions).write.mode(saveMode).option(Header, header).csv(destination)
   }
 
-  def saveDataFrameToCsv(df: DataFrame,
-                         partitions: Int = 1,
-                         destination: String,
-                         saveMode: SaveMode = Overwrite,
-                         header: Boolean = true) : Unit = {
-    logger.debug(s"Saving data frame to csv with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
-    df.coalesce(partitions).write.mode(saveMode).option(Header, header).csv(destination)
-  }
-
-  @Deprecated
+  @deprecated("This method will be removed", "v1.3.0")
   def saveDataSetToCsv[T](ds: Dataset[T],
                           partitions: Int = 1,
                           destination: String,
@@ -38,16 +29,7 @@ object DataUtils {
     ds.coalesce(partitions).write.mode(saveMode).option(Header, header).csv(destination)
   }
 
-  def saveDataSetToCsv[T](ds: Dataset[T],
-                          partitions: Int = 1,
-                          destination: String,
-                          saveMode: SaveMode = Overwrite,
-                          header: Boolean = true) : Unit = {
-    logger.debug(s"Saving data set to csv with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
-    ds.coalesce(partitions).write.mode(saveMode).option(Header, header).csv(destination)
-  }
-
-  @Deprecated
+  @deprecated("This method will be removed", "v1.3.0")
   def saveDataFrameToJson(df: DataFrame,
                           destination: String,
                           partitions: Int = 1,
@@ -57,16 +39,7 @@ object DataUtils {
     df.coalesce(partitions).write.mode(saveMode).json(destination)
   }
 
-  def saveDataFrameToJson(df: DataFrame,
-                          destination: String,
-                          partitions: Int = 1,
-                          saveMode: SaveMode = Overwrite,
-                          header: Boolean = false): Unit = {
-    logger.debug(s"Saving data frame to json with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
-    df.coalesce(partitions).write.mode(saveMode).json(destination)
-  }
-
-  @Deprecated
+  @deprecated("This method will be removed", "v1.3.0")
   def saveDataSetToJson[T](ds: Dataset[T],
                            destination: String,
                            partitions: Int = 1,
@@ -76,16 +49,7 @@ object DataUtils {
     ds.coalesce(partitions).write.mode(saveMode).json(destination)
   }
 
-  def saveDataSetToJson[T](ds: Dataset[T],
-                           destination: String,
-                           partitions: Int = 1,
-                           saveMode: SaveMode = Overwrite,
-                           header: Boolean = false): Unit = {
-    logger.debug(s"Saving data set to json with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
-    ds.coalesce(partitions).write.mode(saveMode).json(destination)
-  }
-
-  @Deprecated
+  @deprecated("This method will be removed", "v1.3.0")
   def saveDataFrameToParquet(df: DataFrame,
                              destination: String,
                              partitions: Int = 1,
@@ -94,15 +58,8 @@ object DataUtils {
     df.coalesce(partitions).write.mode(saveMode).parquet(destination)
   }
 
-  def saveDataFrameToParquet(df: DataFrame,
-                             destination: String,
-                             partitions: Int = 1,
-                             saveMode: SaveMode = Overwrite): Unit = {
-    logger.debug(s"Saving data frame to parquet with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
-    df.coalesce(partitions).write.mode(saveMode).parquet(destination)
-  }
 
-  @Deprecated
+  @deprecated("This method will be removed", "v1.3.0")
   def saveDataSetToParquet[T](ds: Dataset[T],
                               destination: String,
                               partitions: Int = 1,
@@ -111,14 +68,7 @@ object DataUtils {
     ds.coalesce(partitions).write.mode(saveMode).parquet(destination)
   }
 
-  def saveDataSetToParquet[T](ds: Dataset[T],
-                              destination: String,
-                              partitions: Int = 1,
-                              saveMode: SaveMode = Overwrite): Unit = {
-    logger.debug(s"Saving data frame to parquet with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
-    ds.coalesce(partitions).write.mode(saveMode).parquet(destination)
-  }
-
+  @deprecated("This method will be removed", "v1.3.0")
   def extractDistinctValues(contents: DataFrame,
                             columnName: String): DataFrame = {
     contents.select(contents(columnName)).distinct.orderBy(asc(columnName))
