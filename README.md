@@ -10,10 +10,11 @@ tired of copying and pasting the same bits of code, I realized it was about time
 
 Some of the classes found here are related to:
 - Command line argument parsing
-- AWS S3 download/upload functions
 - Timer utils
 - Decompressing data (zip format)
 - File utils
+- REST client util
+- Data utils
 
 ## 3. Build and deploy
 
