@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.2.6]
+
+### Changed
+- Refactoring to DataUtils object
+
 ## [v1.2.5]
 
 ### Changed
@@ -102,3 +107,4 @@ All notable changes to this project will be documented in this file.
 [v1.2.3]: https://github.com/andersonkmi/spark-utils/compare/v1.2.3...v1.2.2
 [v1.2.4]: https://github.com/andersonkmi/spark-utils/compare/v1.2.4...v1.2.3
 [v1.2.5]: https://github.com/andersonkmi/spark-utils/compare/v1.2.5...v1.2.4
+[v1.2.6]: https://github.com/andersonkmi/spark-utils/compare/v1.2.6...v1.2.5
