@@ -25,8 +25,6 @@ object ZipUtils {
         val fileName = ze.getName
         val newFile = new File(outputFolder + File.separator + fileName)
 
-        System.out.println("file unzip : " + newFile.getAbsoluteFile)
-
         //create folders
         new File(newFile.getParent).mkdirs()
 
