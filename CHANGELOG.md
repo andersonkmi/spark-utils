@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [v1.2.8]
+
+### Changed
+- Added method to select multiple columns from a data frame.
+
+
 ## [v1.2.7]
 
 ### Changed
@@ -114,3 +120,4 @@ All notable changes to this project will be documented in this file.
 [v1.2.5]: https://github.com/andersonkmi/spark-utils/compare/v1.2.5...v1.2.4
 [v1.2.6]: https://github.com/andersonkmi/spark-utils/compare/v1.2.6...v1.2.5
 [v1.2.7]: https://github.com/andersonkmi/spark-utils/compare/v1.2.7...v1.2.6
+[v1.2.8]: https://github.com/andersonkmi/spark-utils/compare/v1.2.8...v1.2.7
