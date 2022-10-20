@@ -10,7 +10,7 @@ val appName = "spark-utils"
 
 version := appVersion
 
-scalaVersion := "2.12.13"
+scalaVersion := "2.13.10"
 
 resolvers += Classpaths.typesafeReleases
 
