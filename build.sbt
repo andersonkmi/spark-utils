@@ -1,5 +1,3 @@
-import Dependencies._
-
 organization := "org.codecraftlabs.spark"
 
 name := "spark-utils"
@@ -15,7 +13,7 @@ scalaVersion := "2.13.10"
 resolvers += Classpaths.typesafeReleases
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "3.2.2",
-  "org.apache.spark" %% "spark-sql" % "3.2.2",
-  scalaTest % Test
+  "org.apache.spark" %% "spark-core" % "3.3.3",
+  "org.apache.spark" %% "spark-sql" % "3.3.2",
+  "org.scalatest" %% "scalatest" % "3.2.17" % "test"
 )

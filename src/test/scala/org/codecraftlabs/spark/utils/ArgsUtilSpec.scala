@@ -1,9 +1,11 @@
 package org.codecraftlabs.spark.utils
 
 import org.codecraftlabs.spark.utils.ArgsUtils.parseArgs
-import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ArgsUtilSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
+class ArgsUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll {
 
   "Null args" should "be not null" in {
     val result = parseArgs(null)
@@ -41,9 +43,9 @@ class ArgsUtilSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
     val result = parseArgs(args)
     result should not be null
     result.size shouldEqual 2
-    result.head._1 shouldEqual "--test"
-    result.head._2 shouldEqual "value"
-    result.last._1 shouldEqual "--test2"
-    result.last._2 shouldEqual "value2"
+    result.contains("--test") shouldEqual true
+    result("--test") shouldEqual "value"
+    result.contains("--test2") shouldEqual true
+    result("--test2") shouldEqual "value2"
   }
 }
