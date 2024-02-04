@@ -4,13 +4,13 @@ import java.io.File
 import java.nio.file.FileSystems.getDefault
 
 object FileUtil {
-  def getListOfFiles(dir: Option[String], extensions: List[String]): List[String] = {
+  def getListOfFiles(dir: Option[String], extensions: List[String]): Set[String] = {
     dir match {
       case Some(directory) => val root = new File (directory)
-        if (! (root.exists && root.isDirectory) ) List[String]()
+        if (! (root.exists && root.isDirectory) ) Set[String]()
           else
-            getRecursiveListOfFiles (root).filter (item => extensions.exists (item.getName.endsWith (_) ) ).map (item => item.getAbsolutePath).toList
-      case None => List[String]()
+            getRecursiveListOfFiles (root).filter (item => extensions.exists (item.getName.endsWith (_) ) ).map (item => item.getAbsolutePath).toSet
+      case None => Set[String]()
     }
   }
 
