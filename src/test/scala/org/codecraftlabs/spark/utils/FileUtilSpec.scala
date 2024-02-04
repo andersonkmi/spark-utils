@@ -24,6 +24,11 @@ class FileUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll {
     removeFile(EmptyFile2)
   }
 
+  "When passing a directory name and a file name" should "return a full path name" in {
+    val resultingName = FileUtil.buildFilePath("/home/test/folder", "test.txt")
+    resultingName shouldEqual "/home/test/folder/test.txt"
+  }
+
   "When directory option is empty" should "return empty list" in {
     val results = getListOfFiles(None, List(".scala"))
     results should not be None
@@ -39,7 +44,7 @@ class FileUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll {
     ExpectedFiles.subsetOf(results) shouldEqual true
   }
 
-  def createEmptyFile(filePath: String): Unit = {
+  private def createEmptyFile(filePath: String): Unit = {
     val file = new File(filePath)
     if (file.createNewFile()) {
       println(s"File created: ${file.getName}")
@@ -48,7 +53,7 @@ class FileUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll {
     }
   }
 
-  def removeFile(filePath: String): Unit = {
+  private def removeFile(filePath: String): Unit = {
     val file = new File(filePath)
     file.delete();
   }
