@@ -30,7 +30,7 @@ object DataSetUtil {
                                destination: String,
                                partitions: Int = 1,
                                saveMode: SaveMode = Overwrite): Unit = {
-    logger.debug(s"Saving data frame to parquet with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
+    logger.debug(s"Saving data set to parquet with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
     ds.coalesce(partitions).write.mode(saveMode).parquet(destination)
   }
 
