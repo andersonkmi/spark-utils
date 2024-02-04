@@ -64,7 +64,7 @@ object DataUtils {
                               destination: String,
                               partitions: Int = 1,
                               saveMode: String = "overwrite"): Unit = {
-    logger.debug(s"Saving data frame to parquet with $partitions partitions, mode '$saveMode', destination '$destination'")
+    logger.debug(s"Saving data set to parquet with $partitions partitions, mode '$saveMode', destination '$destination'")
     ds.coalesce(partitions).write.mode(saveMode).parquet(destination)
   }
 
