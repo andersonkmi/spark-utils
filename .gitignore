@@ -13,3 +13,5 @@ target/
 *.parquet
 *.jar
 *.json
+dataframe.csv/
+dataframe.json/
