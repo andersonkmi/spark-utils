@@ -17,3 +17,6 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % "3.3.2",
   "org.scalatest" %% "scalatest" % "3.2.17" % "test"
 )
+
+fork in Test := true
+javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")

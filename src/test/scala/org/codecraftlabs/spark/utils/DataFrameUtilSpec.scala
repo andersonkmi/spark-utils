@@ -23,10 +23,6 @@ class DataFrameUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
     sparkSession = Some(SparkSession.builder().config(sparkConfig).getOrCreate())
   }
 
-  override def afterAll(): Unit = {
-    sparkSession.get.stop()
-  }
-
   private def createDataFrame(): DataFrame = {
     val sampleData = Seq(
     Row("account001", "Mike", 1),
