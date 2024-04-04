@@ -13,10 +13,12 @@ scalaVersion := "2.13.10"
 resolvers += Classpaths.typesafeReleases
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "3.3.3",
-  "org.apache.spark" %% "spark-sql" % "3.3.2",
+  "org.apache.spark" %% "spark-core" % "3.5.0",
+  "org.apache.spark" %% "spark-sql" % "3.5.0",
   "org.scalatest" %% "scalatest" % "3.2.17" % "test"
 )
 
-fork in Test := true
-javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")
+//Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.ScalaLibrary
+//Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
+//fork in Test := true
+//javaOptions ++= Seq("-Xms512M", "-Xmx4096M", "-XX:+CMSClassUnloadingEnabled")
