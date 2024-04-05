@@ -1,12 +1,10 @@
 package org.codecraftlabs.spark.utils
 
-import org.apache.log4j.Logger
 import org.apache.spark.sql.SaveMode.Overwrite
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, SaveMode}
 
 object DataFrameUtil {
-  @transient lazy val logger:Logger = Logger.getLogger(getClass.getName)
   private val Header: String = "header"
 
   def saveDataFrameToCsv(df: DataFrame,
@@ -14,7 +12,6 @@ object DataFrameUtil {
                           destination: String,
                           saveMode: SaveMode = Overwrite,
                           header: Boolean = true) : Unit = {
-    logger.debug(s"Saving data frame to csv with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
     df.coalesce(partitions).write.mode(saveMode).option(Header, header).csv(destination)
   }
 
@@ -22,7 +19,6 @@ object DataFrameUtil {
                            destination: String,
                            partitions: Int = 1,
                            saveMode: SaveMode = Overwrite): Unit = {
-    logger.debug(s"Saving data frame to json with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
     df.coalesce(partitions).write.mode(saveMode).json(destination)
   }
 
@@ -30,7 +26,6 @@ object DataFrameUtil {
                               destination: String,
                               partitions: Int = 1,
                               saveMode: SaveMode = Overwrite): Unit = {
-    logger.debug(s"Saving data frame to parquet with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
     df.coalesce(partitions).write.mode(saveMode).parquet(destination)
   }
 
