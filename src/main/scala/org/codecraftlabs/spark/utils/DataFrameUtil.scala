@@ -21,8 +21,7 @@ object DataFrameUtil {
   def saveDataFrameToJson(df: DataFrame,
                            destination: String,
                            partitions: Int = 1,
-                           saveMode: SaveMode = Overwrite,
-                           header: Boolean = false): Unit = {
+                           saveMode: SaveMode = Overwrite): Unit = {
     logger.debug(s"Saving data frame to json with $partitions partitions, mode '${saveMode.name()}', destination '$destination'")
     df.coalesce(partitions).write.mode(saveMode).json(destination)
   }
