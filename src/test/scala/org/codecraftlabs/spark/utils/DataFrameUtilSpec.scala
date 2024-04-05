@@ -25,8 +25,9 @@ class DataFrameUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
 
   private def createDataFrame(): DataFrame = {
     val sampleData = Seq(
-    Row("account001", "Mike", 1),
-    Row("account002", "Bob", 2)
+      Row("account001", "Mike", 1),
+      Row("account002", "Bob", 2),
+      Row("account003", "Bob", 2)
     )
     val schema = schemaDefinition()
     sparkSession.get.createDataFrame(sparkSession.get.sparkContext.parallelize(sampleData), schema)
@@ -44,5 +45,14 @@ class DataFrameUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
   "When saving the data frame as csv" should "create a CSV file" in {
     val dataFrame = createDataFrame()
     DataFrameUtil.saveDataFrameToCsv(df = dataFrame, destination = CsvFile)
+  }
+
+  "When extracting distinct values" should "return a new dataframe with unique values" in {
+    val dataFrame = createDataFrame()
+    val df = DataFrameUtil.extractDistinctValues(dataFrame, "userName")
+    df.count() shouldEqual 2
+    val results = df.collect().map(_(0)).toList
+    results.head shouldEqual "Bob"
+    results(1) shouldEqual "Mike"
   }
 }

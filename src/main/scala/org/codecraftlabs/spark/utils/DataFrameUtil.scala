@@ -35,9 +35,9 @@ object DataFrameUtil {
     df.coalesce(partitions).write.mode(saveMode).parquet(destination)
   }
 
-  def extractDistinctValues(contents: DataFrame,
+  def extractDistinctValues(df: DataFrame,
                             columnName: String): DataFrame = {
-    contents.select(contents(columnName)).distinct.orderBy(asc(columnName))
+    df.select(columnName).distinct.orderBy(asc(columnName))
   }
 
   def extractDistinctValues(df: DataFrame, columns: List[String]): DataFrame = {
