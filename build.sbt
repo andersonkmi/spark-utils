@@ -20,5 +20,5 @@ libraryDependencies ++= Seq(
 
 //Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.ScalaLibrary
 //Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
-//fork in Test := true
-//javaOptions ++= Seq("-Xms512M", "-Xmx4096M", "-XX:+CMSClassUnloadingEnabled")
+Test / fork := true
+javaOptions ++= Seq("-Xms512M", "-Xmx4096M", "-XX:+CMSClassUnloadingEnabled")
