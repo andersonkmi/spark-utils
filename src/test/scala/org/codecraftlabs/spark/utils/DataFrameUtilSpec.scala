@@ -2,7 +2,9 @@ package org.codecraftlabs.spark.utils
 
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
+import org.apache.spark.sql.functions.asc
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
+import org.codecraftlabs.spark.utils.DataFrameUtil.{extractDistinctValues, saveDataFrameToCsv}
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
@@ -44,12 +46,12 @@ class DataFrameUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
 
   "When saving the data frame as csv" should "create a CSV file" in {
     val dataFrame = createDataFrame()
-    DataFrameUtil.saveDataFrameToCsv(df = dataFrame, destination = CsvFile)
+    saveDataFrameToCsv(df = dataFrame, destination = CsvFile)
   }
 
   "When extracting distinct values" should "return a new dataframe with unique values" in {
     val dataFrame = createDataFrame()
-    val df = DataFrameUtil.extractDistinctValues(dataFrame, "userName")
+    val df = extractDistinctValues(dataFrame, "userName").orderBy(asc("userName"))
     df.count() shouldEqual 2
     val results = df.collect().map(_(0)).toList
     results.head shouldEqual "Bob"

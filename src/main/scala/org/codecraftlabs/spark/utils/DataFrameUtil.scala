@@ -2,7 +2,7 @@ package org.codecraftlabs.spark.utils
 
 import org.apache.log4j.Logger
 import org.apache.spark.sql.SaveMode.Overwrite
-import org.apache.spark.sql.functions.{asc, col}
+import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, SaveMode}
 
 object DataFrameUtil {
@@ -37,7 +37,7 @@ object DataFrameUtil {
 
   def extractDistinctValues(df: DataFrame,
                             columnName: String): DataFrame = {
-    df.select(columnName).distinct.orderBy(asc(columnName))
+    df.select(columnName).distinct()
   }
 
   def extractDistinctValues(df: DataFrame, columns: List[String]): DataFrame = {
