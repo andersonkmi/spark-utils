@@ -4,7 +4,7 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import org.apache.spark.sql.functions.asc
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
-import org.codecraftlabs.spark.utils.DataFrameUtil.{extractDistinctValues, saveDataFrameToCsv}
+import org.codecraftlabs.spark.utils.DataFrameUtil.{extractDistinctValues, saveDataFrameToCsv, saveDataFrameToJson}
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
@@ -15,6 +15,7 @@ class DataFrameUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
   @transient var sparkSession: Option[SparkSession] = None
   private val CurrentDirectory = Path("src/test/scala/org/codecraftlabs/spark/utils").toAbsolute
   private val CsvFile = CurrentDirectory.toString + "/dataframe.csv"
+  private val JsonFile = CurrentDirectory.toString + "/dataframe.json"
 
   override def beforeAll(): Unit = {
     val sparkConfig = new SparkConf()
@@ -47,6 +48,11 @@ class DataFrameUtilSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll
   "When saving the data frame as csv" should "create a CSV file" in {
     val dataFrame = createDataFrame()
     saveDataFrameToCsv(df = dataFrame, destination = CsvFile)
+  }
+
+  "When saving the data frame as json" should "create a json file" in {
+    val dataFrame = createDataFrame()
+    saveDataFrameToJson(df = dataFrame, destination = JsonFile)
   }
 
   "When extracting distinct values" should "return a new dataframe with unique values" in {
