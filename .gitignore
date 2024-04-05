@@ -16,3 +16,4 @@ target/
 dataframe.csv/
 dataframe.json/
 dataframe.parquet/
+.DS_Store/
